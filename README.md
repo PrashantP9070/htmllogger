@@ -34,7 +34,7 @@ Pre-Requisite
 2) At the start of each test you have to use 'assert_testcase_log("Test_Case_name")',
 3) Inorder to detailing of testcase steps you will have to use 'assert_step_log('Test_step_details')'
 4) To handle failures you will write your test in 'Try Except' block and in except block call 
-   'assert_step_fail_log(driver, str(e))' Pass First argument as driver object to capture screenshot of failure.
+   'assert_step_fail_log(driver, str(e))' pass First argument as driver object to capture screenshot of failure.
     second argument is except object converted in string format.
 	
 Follow below examples for more understanding...	
@@ -56,7 +56,7 @@ class InputFormsCheck2(unittest.TestCase):
         self.logger = HTMlLogger()
         binary = FirefoxBinary('Binary Path for your browser')
         self.driver = webdriver.Firefox(firefox_binary=binary,
-                                                executable_path="/geckodriver.exe")
+                                                executable_path=r"/geckodriver.exe")
 
     # Testing Single Input Field.
     def test_singleInputField(self):
@@ -105,8 +105,8 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 def setup(request):
     print("initiating driver")
     logger = HTMlLogger()
-    binary = FirefoxBinary('Binary Path for your browser')
-    driver = webdriver.Firefox(firefox_binary=binary,executable_path="/geckodriver.exe")
+    binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
+    driver = webdriver.Firefox(firefox_binary=binary,executable_path=r"D:/SeleniumTest/SeleniumTest/MainResources/drivers/geckodriver.exe")
     request.instance.driver = driver
     request.instance.logger = logger
     driver.get("http://seleniumeasy.com/test")
