@@ -7,7 +7,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="htmllogger",
-    version="1.0",
+    version="v 0.1",
     author = "Prashant Pawar",
     author_email="pawarprashant077@gmail.com",
     description="Python library provides interactive test report for selenium",
