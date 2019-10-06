@@ -56,7 +56,7 @@ class InputFormsCheck2(unittest.TestCase):
         self.logger = HTMlLogger()
         binary = FirefoxBinary('Binary Path for your browser')
         self.driver = webdriver.Firefox(firefox_binary=binary,
-                                                executable_path=r"/geckodriver.exe")
+                                                executable_path="/geckodriver.exe")
 
     # Testing Single Input Field.
     def test_singleInputField(self):
@@ -105,8 +105,8 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 def setup(request):
     print("initiating driver")
     logger = HTMlLogger()
-    binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
-    driver = webdriver.Firefox(firefox_binary=binary,executable_path=r"D:/SeleniumTest/SeleniumTest/MainResources/drivers/geckodriver.exe")
+    binary = FirefoxBinary('Binary Path for your browser')
+    driver = webdriver.Firefox(firefox_binary=binary,executable_path="/geckodriver.exe")
     request.instance.driver = driver
     request.instance.logger = logger
     driver.get("http://seleniumeasy.com/test")
