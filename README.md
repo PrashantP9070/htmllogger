@@ -34,7 +34,7 @@ Pre-Requisite
 2) At the start of each test you have to use 'assert_testcase_log("Test_Case_name")',
 3) Inorder to detailing of testcase steps you will have to use 'assert_step_log('Test_step_details')'
 4) To handle failures you will write your test in 'Try Except' block and in except block call 
-   'assert_step_fail_log(driver, str(e))'PASS First argument for  as driver object so it can capture screenshot of failure.
+   'assert_step_fail_log(driver, str(e))' Pass First argument as driver object to capture screenshot of failure.
     second argument is except object converted in string format.
 	
 Follow below examples for more understanding...	
