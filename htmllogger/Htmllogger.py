@@ -1,4 +1,4 @@
-import os
+import os, sys
 from datetime import datetime
 import time
 import random
@@ -6,8 +6,8 @@ import inspect
 import platform
 import getpass
 import socket
-
-
+import inspect
+from distutils.dir_util import copy_tree
 
 class Singleton(type):
     _instances = {}
@@ -26,16 +26,27 @@ class HTMlLogger(metaclass=Singleton):
     rowid = ""
     childid = ""
 
-    def __init__(self, *args):
-        for arg in args:
-            if arg != "":
-                self.filepath = arg
-                break
-        if args.__len__()==0:
-            self.filepath = str(os.path.dirname(os.path.abspath(__file__)))+"\..\.."
-        if not os.path.exists(self.filepath+"/Reports"):
-            os.mkdir(self.filepath+"/Reports")
-        self.filepath = self.filepath+"/Reports"
+    def __init__(self, reportpath):
+        self.filepath = reportpath
+        # for arg in args:
+        #     if arg != "":
+        #         self.filepath = arg
+        #         break
+        # if args.__len__()==0:
+        #     self.filepath = str(os.path.dirname(os.path.abspath(__file__)))+"\..\.."
+        if not(self.filepath.find("Reports")!=-1):
+            if not os.path.exists(self.filepath + "/Reports"):
+                os.mkdir(self.filepath + "/Reports")
+            self.filepath = self.filepath + "/Reports"
+        else:
+            if not os.path.exists(self.filepath):
+                os.mkdir(self.filepath)
+
+
+        if not os.path.exists(self.filepath+"/css"):
+            copy_tree(str(os.path.dirname(os.path.abspath(__file__)))+'/css',self.filepath+"/css")
+
+
         repfld = self.filepath
         print(repfld)
         self.filepath = self.filepath + "/report_" + str(time.strftime("%Y%m%d-%H%M%S")) + ".html"
@@ -403,13 +414,13 @@ class HTMlLogger(metaclass=Singleton):
         self.f.close()
         # print(self.__doc__)
 
-    def assert_step_log(self, status, log):
+    def assert_step_log(self, log):
         self.f = open(self.filepath, "a")
         self.rowid = random.randrange(6000, 200000, 1)
 
         tlog = """
                       <tr row-id='""" + str(self.rowid) + """' parent-id='""" + str(self.parentid) + """'>
-                        <td>""" + log + """</td><td class="data"><img src="css/images/pass_4.png"/>&nbsp """ + status + """</td><td class="data">""" + str(
+                        <td>""" + log + """</td><td class="data"><img src="css/images/pass_4.png"/>&nbsp PASS</td><td class="data">""" + str(
             time.strftime("%H:%M:%S")) + """</td>
                       </tr>
                     """

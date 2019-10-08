@@ -17,5 +17,5 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 """
-__VERSION__='0.1'
-from htmllogger.Htmllogger import Htmllogger
+__VERSION__='1.1'
+from htmllogger.Htmllogger import HTMlLogger

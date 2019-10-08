@@ -1,16 +1,16 @@
 import unittest
 from selenium import webdriver
-from Main.Utility import HTMlLogger
+from htmllogger.Htmllogger import HTMlLogger
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
 class InputFormsCheck2(unittest.TestCase):
 
     # Opening browser.
     def setUp(self):
-        self.logger = HTMlLogger()
+        self.logger = HTMlLogger('directory path in which report to be created')
         binary = FirefoxBinary('Binary Path for your browser')
         self.driver = webdriver.Firefox(firefox_binary=binary,
-                                                executable_path=r"/geckodriver.exe")
+                                                executable_path="driver path")
 
     # Testing Single Input Field.
     def test_singleInputField(self):

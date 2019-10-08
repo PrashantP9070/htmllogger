@@ -46,14 +46,14 @@ Examples
 ```python
 import unittest
 from selenium import webdriver
-from Main.Utility import HTMlLogger
+from htmllogger.Htmllogger import HTMlLogger
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
 class InputFormsCheck2(unittest.TestCase):
 
     # Opening browser.
     def setUp(self):
-        self.logger = HTMlLogger()
+        self.logger = HTMlLogger('Path of folder where we need to create report')
         binary = FirefoxBinary('Binary Path for your browser')
         self.driver = webdriver.Firefox(firefox_binary=binary,
                                                 executable_path=r"/geckodriver.exe")
@@ -98,13 +98,13 @@ Inside test_Login.py
 ```python
 import pytest
 from selenium import webdriver
-from Main.Utility import HTMlLogger
+from htmllogger.Htmllogger import HTMlLogger
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
 @pytest.fixture()
 def setup(request):
     print("initiating driver")
-    logger = HTMlLogger()
+    logger = HTMlLogger('Path of folder where we need to create report')
     binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
     driver = webdriver.Firefox(firefox_binary=binary,executable_path=r"D:/SeleniumTest/SeleniumTest/MainResources/drivers/geckodriver.exe")
     request.instance.driver = driver
@@ -133,6 +133,6 @@ class TestExample:
             self.logger.assert_step_log("Verify content on page")
             assert "WELCOME TO SELENIUM EASY DEMO" == centerText
         except Exception as e:
-            self.logger.assert_step_fail_log(self.driver, str(e))
+            self.logger.assert_step_fail_log(self.driver, str(e))      #****Capturing failure
 ```
 
