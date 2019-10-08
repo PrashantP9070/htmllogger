@@ -136,3 +136,10 @@ class TestExample:
             self.logger.assert_step_fail_log(self.driver, str(e))      #****Capturing failure
 ```
 
+Graphical Summary for report Report
+=============
+<img src="./Dashboard.png"  height="150">
+
+Detailed Report
+=============
+<img src="./DetailedReport.png"  height="150">
