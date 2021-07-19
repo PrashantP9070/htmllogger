@@ -52,7 +52,7 @@ class HTMlLogger(metaclass=Singleton):
         self.filepath = self.filepath + "/report_" + str(time.strftime("%Y%m%d-%H%M%S")) + ".html"
         self.f = open(self.filepath, "w+")
         support_logger().create_support(repfld)
-        print('i am htmllogger called')
+        # print('i am htmllogger called')       # Removed unwanted print statement
         strStartFile = """<html>
         	<head>
         	    <meta charset="utf-8">
